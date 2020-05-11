@@ -27,7 +27,7 @@ Account
 @if(Storage::disk('local')->has($user->firstname.'-'.$user->id.'.jpg'))
 <section class="row new-post">
 	<div class="col-md-6 col-md-offset-3">
-		<img src="{{route('account.image',['filename' => $user->firstname.'-'. $user->id. '.jpg'])}}" alt="usama ijaz" class="img-reponsive">
+		<img src="{{route('account.image',['filename' => $user->firstname.'-'.$user->id.'.jpg'])}}" alt="usama ijaz" class="img-reponsive">
 	</div>
 </section>
 @endif

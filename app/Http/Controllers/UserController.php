@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
 {
-	
-	
+  	
 	public function postSignUp(Request $request){
 		
 		$this->validate($request, [
@@ -40,19 +39,19 @@ class UserController extends Controller
 			'email' => 'required',
 			'password' => 'required'
 		]); 
-		if(Auth :: attempt(['email'=> $request['email'],'password' => $request['password']])){
+		if(Auth :: attempt(['email'=> $request['email'],'password' => $request['password']],)){
 			return redirect()->route('hash');
-		}
-		return redirect()->back();
+		 		return redirect()->back();
 		
 	}
+}
+
 
 		public function getLogout()
 		{
 			Auth::logout();
 			return view('welcome');
 		}
-
 		public function getAccount()
 		{
 			return view('account',['user' => Auth::user()]);
@@ -60,12 +59,18 @@ class UserController extends Controller
 
 		public function postSaveAccount(Request $request)
 		{
+			$this->validate($request, [
+			
+			'first_name' => 'required|max:120'
+
+		] );
 		
 			$user= Auth::user();
 			$user->firstname = $request['first_name'];
 			$user->update();
 			$file = $request->file('image');
-			$filename = $request['first_name'] .'-'. $user->id.'.jpg';
+			$filename = $request['first_name'].'-'.$user->id.'.jpg';
+
 			if($file){
 				Storage::disk('local')->put($filename, File::get($file));
  			}
@@ -73,10 +78,10 @@ class UserController extends Controller
 			return redirect()->route('account');
 		}
 
-	public function getUserImage($filename){
-		dd('ok');
-		$file = Storage::disk('local')->get($filename);
-	return new Response($file,200); 
+	 public function getUserImage(Request $request)
+		{
+    $file = Storage::disk('local')->get($request->filename);
+   return $file;
 	}
 	
 

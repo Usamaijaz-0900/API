@@ -68,9 +68,9 @@
   </div>
 </div>
 <script>
-	var url = '{{route('edit')}}';
-	var urlLike = '{{route('like')}}';
-	var token ='{{Session::token() }}';
+	  var token = '{{ Session::token() }}';
+        var urlEdit = '{{ route('edit') }}';
+        var urlLike = '{{ route('like') }}';
 </script>
 @endsection	
 <link href = "{{asset('src/css/main.css')}}" rel = "stylesheet"/>

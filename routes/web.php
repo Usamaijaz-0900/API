@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 	Route::get('/', function () {
 	    return view('welcome');
-	})->name('home');
+	});
 
 
 	Route::post('signup','UserController@postSignUp');
@@ -66,12 +66,27 @@ Route::post('/edit',[
 		'as' => 'edit']
 
 );
-Route::post('/like',[
-		'uses' => 'PostController@postLikePost',
-		'as' => 'like']
+
+Route::post('/like', [
+    'uses' => 'PostController@Post',
+    'as' => 'like'
+]);
+
+
+
+
+Auth::routes();
+
+Route::get('/home',[
+		'uses' => 'HomeController@index',
+		'as' => 'home']
 
 );
 
 
+Route::get('/admin',[
+		'uses' => 'AdminController@index',
+		'as' => 'admin']
 
+);
 
