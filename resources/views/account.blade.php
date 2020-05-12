@@ -32,5 +32,5 @@ Account
 </section>
 @endif
 USAMA iJAZ
-DOOOOOOSS
+IJAZ
 @endsection
