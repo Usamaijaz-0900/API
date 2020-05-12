@@ -31,5 +31,5 @@ Account
 	</div>
 </section>
 @endif
-USAMA iJAZ
+USAMA iJAZ is  
 @endsection
