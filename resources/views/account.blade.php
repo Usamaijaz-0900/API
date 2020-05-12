@@ -32,5 +32,8 @@ Account
 </section>
 @endif
 USAMA iJAZ
+<<<<<<< Updated upstream
 IJAZ
+=======
+>>>>>>> Stashed changes
 @endsection
